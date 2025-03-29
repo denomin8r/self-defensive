@@ -40,12 +40,12 @@ export const setupLighting = (scene, paintings) => {
     folder.add(spotlight, "penumbra", 0, 1).name("Penumbra");
     folder.add(spotlight, "decay", 0, 2).name("Decay");
     folder.add(spotlight, "distance", 0, 100).name("Distance");
-    folder.add(spotlight.position, "x", -50, 50);
-    folder.add(spotlight.position, "y", -50, 50);
-    folder.add(spotlight.position, "z", -50, 50);
-    folder.add(spotlight.target.position, "x", -50, 50);
-    folder.add(spotlight.target.position, "y", -50, 50);
-    folder.add(spotlight.target.position, "z", -50, 50);
+    folder.add(spotlight.position, "light x", -50, 50);
+    folder.add(spotlight.position, "light y", -50, 50);
+    folder.add(spotlight.position, "light z", -50, 50);
+    folder.add(spotlight.target.position, "target x", -50, 50);
+    folder.add(spotlight.target.position, "target y", -50, 50);
+    folder.add(spotlight.target.position, "target z", -50, 50);
 
     return spotlight;
   }
