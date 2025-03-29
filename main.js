@@ -11,7 +11,6 @@ import { setupEventListeners } from "./modules/eventListeners.js";
 import { addObjectsToScene } from "./modules/sceneHelpers.js";
 import { setupPlayButton } from "./modules/menu.js";
 import { clickHandling } from "./modules/clickHandling.js";
-import { setupVR } from "./modules/VRSupport.js";
 
 let { camera, controls, renderer } = setupScene();
 
@@ -35,5 +34,3 @@ setupEventListeners(controls);
 clickHandling(renderer, camera, paintings);
 
 setupRendering(scene, camera, renderer, paintings, controls, walls);
-
-setupVR(renderer);
