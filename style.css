@@ -17,7 +17,6 @@ body {
   font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
     "Lucida Grande", sans-serif;
   background-color: #121212;
-  cursor: url("http://www.rw-designer.com/cursor-view/97756.png") 16 16, auto;
 }
 
 p,
@@ -225,40 +224,6 @@ canvas {
   }
 }
 
-#painting-info {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 20px;
-  border-radius: 10px;
-  font-family: "Arial", sans-serif;
-  color: #fff;
-  width: 300px;
-  height: 150px;
-  z-index: 1;
-  transition: all 0.3s ease-in-out;
-  transform: translateY(100px);
-  opacity: 0;
-}
-
-#painting-info.show {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-#painting-info h3 {
-  margin: 0 0 10px 0;
-  font-size: 2em;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-#painting-info p {
-  margin: 0;
-  font-size: 1.2em;
-}
-
 #info-panel {
   position: fixed;
   bottom: 10px;
@@ -359,27 +324,4 @@ canvas {
   background-color: rgba(52, 58, 125);
   cursor: pointer;
   transform: scale(1.05);
-}
-
-#audio_controls {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 2; /* To make sure it shows up on top of other elements */
-}
-
-#audio_controls button {
-  display: block;
-  background-color: rgba(35, 37, 88, 0.8);
-  color: #f2c641;
-  border: none;
-  border-radius: 10px;
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#audio_controls button:hover {
-  background-color: rgba(52, 58, 125, 0.8);
 }
