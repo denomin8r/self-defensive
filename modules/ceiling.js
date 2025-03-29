@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { roomDimensions } from "./constants";
 
 // create a function that takes a scene and a textureLoader as arguments that will be passed in from main.js where the createCeiling is called
 export const createCeiling = (scene, textureLoader) => {
@@ -34,7 +35,7 @@ export const createCeiling = (scene, textureLoader) => {
   normalGLTexture.wrapS = normalGLTexture.wrapT = THREE.RepeatWrapping;
   roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping;
 
-  const ceilingGeometry = new THREE.PlaneGeometry(45, 40);
+  const ceilingGeometry = new THREE.PlaneGeometry(roomDimensions.width, roomDimensions.depth);
   const ceilingMaterial = new THREE.MeshLambertMaterial({
     map: colorTexture,
     displacementMap: displacementTexture,
@@ -51,7 +52,7 @@ export const createCeiling = (scene, textureLoader) => {
 
   ceilingPlane.rotation.x = Math.PI / 2;
 
-  ceilingPlane.position.y = 10;
+  ceilingPlane.position.y = roomDimensions.height / 2;
 
   scene.add(ceilingPlane);
 };

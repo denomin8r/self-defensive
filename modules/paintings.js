@@ -16,11 +16,9 @@ export function createPaintings(scene, textureLoader) {
     painting.position.set(data.position.x, data.position.y, data.position.z); 
     painting.rotation.y = data.rotationY; 
 
-    
     painting.userData = {
       type: 'painting', 
       info: data.info, 
-      url: data.info.link
     };
 
     painting.castShadow = true; 

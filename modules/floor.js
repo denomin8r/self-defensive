@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import floortTexture from "../public/WoodFloor040_4K-JPG/WoodFloor040_4K_Color.jpg";
+import { roomDimensions } from "./constants";
 
 export const setupFloor = (scene) => {
   const textureLoader = new THREE.TextureLoader();
@@ -28,7 +29,7 @@ export const setupFloor = (scene) => {
   roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping;
   aoTexture.wrapS = aoTexture.wrapT = THREE.RepeatWrapping;
 
-  const planeGeometry = new THREE.PlaneGeometry(45, 45);
+  const planeGeometry = new THREE.PlaneGeometry(roomDimensions.width, roomDimensions.depth);
   const planeMaterial = new THREE.MeshStandardMaterial({
     map: colorTexture,
     displacementMap: displacementTexture,
@@ -42,7 +43,7 @@ export const setupFloor = (scene) => {
   const floorPlane = new THREE.Mesh(planeGeometry, planeMaterial);
 
   floorPlane.rotation.x = Math.PI / 2;
-  floorPlane.position.y = -Math.PI;
+  floorPlane.position.y = -Math.floor(roomDimensions.height / 2) + 1;
 
   scene.add(floorPlane);
 };

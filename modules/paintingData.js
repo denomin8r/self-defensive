@@ -15,7 +15,6 @@ export const paintingData = [
         i + 1
       } perfectly encapsulates his love for the beauty of everyday life.`,
       year: `Year ${i + 1}`,
-      link: 'https://github.com/theringsofsaturn',
     },
   })),
   // Back Wall
@@ -32,7 +31,6 @@ export const paintingData = [
         i + 5
       } by Vincent van Gogh is an exceptional piece showcasing his remarkable ability to capture emotion and atmosphere.`,
       year: `Year ${i + 5}`,
-      link: 'https://github.com/theringsofsaturn',
     },
   })),
   // Left Wall
@@ -49,7 +47,6 @@ export const paintingData = [
         i + 9
       } is a testament to Van Gogh's artistic genius.`,
       year: `Year ${i + 9}`,
-      link: 'https://github.com/theringsofsaturn',
     },
   })),
   // Right Wall
@@ -66,7 +63,6 @@ export const paintingData = [
         i + 13
       } is a captivating piece by Vincent van Gogh, reflecting his distinctive style and deep passion for art.`,
       year: `Year ${i + 13}`,
-      link: 'https://github.com/theringsofsaturn',
     },
   })),
 ];

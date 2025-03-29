@@ -1,5 +1,7 @@
 import * as THREE from "three";
 
+import { roomDimensions } from "./constants";
+
 export function createWalls(scene, textureLoader) {
   let wallGroup = new THREE.Group();
   scene.add(wallGroup);
@@ -20,38 +22,39 @@ export function createWalls(scene, textureLoader) {
     roughnessMap: roughnessTexture,
     side: THREE.DoubleSide,
   });
+
   // Front Wall
   const frontWall = new THREE.Mesh( 
-    new THREE.BoxGeometry(80, 20, 0.001), 
+    new THREE.BoxGeometry(roomDimensions.width, roomDimensions.height, 0.001), 
     wallMaterial 
   );
 
-  frontWall.position.z = -20; 
+  frontWall.position.z = -Math.floor(roomDimensions.depth / 2); 
 
   // Left Wall
   const leftWall = new THREE.Mesh(
-    new THREE.BoxGeometry(80, 20, 0.001), 
+    new THREE.BoxGeometry(roomDimensions.depth, roomDimensions.height, 0.001), 
     wallMaterial
   );
 
   leftWall.rotation.y = Math.PI / 2; 
-  leftWall.position.x = -20; 
+  leftWall.position.x = -Math.floor(roomDimensions.width / 2); 
 
   // Right Wall
   const rightWall = new THREE.Mesh( 
-    new THREE.BoxGeometry(80, 20, 0.001), 
+    new THREE.BoxGeometry(roomDimensions.depth, roomDimensions.height, 0.001), 
     wallMaterial
   );
 
-  rightWall.position.x = 20;
+  rightWall.position.x = Math.floor(roomDimensions.width / 2);
   rightWall.rotation.y = Math.PI / 2; 
 
   // Back Wall
   const backWall = new THREE.Mesh(
-    new THREE.BoxGeometry(80, 20, 0.001),
+    new THREE.BoxGeometry(roomDimensions.width, roomDimensions.height, 0.001),
     wallMaterial 
   );
-  backWall.position.z = 20;
+  backWall.position.z = Math.floor(roomDimensions.depth / 2);
 
   wallGroup.add(frontWall, backWall, leftWall, rightWall);
 

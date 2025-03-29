@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { PointerLockControls } from "three-stdlib";
+import { roomDimensions } from "./constants";
 
 export const scene = new THREE.Scene(); // create a scene
 let camera;
@@ -15,7 +16,7 @@ export const setupScene = () => {
     1000 // far clipping plane
   );
   scene.add(camera); // add the camera to the scene
-  camera.position.set(0, 2, 15); // move the camera up 3 units in the Y axis
+  camera.position.set(0, -Math.floor(roomDimensions.height / 2) + 5, 0); // move the camera up 3 units in the Y axis
 
   renderer = new THREE.WebGLRenderer({ antialias: false }); // create a WebGLRenderer and set its antialias property to true to enable antialiasing which smooths out the edges of what is rendered
   renderer.setSize(window.innerWidth, window.innerHeight); // set the size of the renderer to the inner width and height of the window (the browser window)
