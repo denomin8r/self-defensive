@@ -81,24 +81,4 @@ export const setupLighting = (scene, paintings) => {
     0.948,
     new THREE.Vector3(20, 0, 0)
   );
-
-  const statueSpotlight = createSpotlight(
-    0,
-    10,
-    0,
-    0.948,
-    new THREE.Vector3(0, -4.2, 0)
-  ); // Spotlight for the statue
-  statueSpotlight.angle = 0.75084;
-  statueSpotlight.decay = 1;
-  statueSpotlight.penumbra = 1;
-  statueSpotlight.distance = 0;
-
-  const statueSpotlightFolder = gui.addFolder("Statue Light");
-  statueSpotlightFolder.add(statueSpotlight, "intensity", 0, 4);
-  statueSpotlightFolder
-    .add(statueSpotlight, "angle", 0, Math.PI / 2)
-    .name("Angle");
-  statueSpotlightFolder.add(statueSpotlight, "penumbra", 0, 1).name("Penumbra");
-  statueSpotlightFolder.add(statueSpotlight, "decay", 0, 2).name("Decay");
 };

@@ -31,9 +31,6 @@ https://ambientcg.com/view?id=WoodFloor040
 The Walls in 4K:
 https://polyhaven.com/a/leather_white
 
-3D Model Statue:
-https://sketchfab.com/3d-models/100kz11-aphrodite-kallipygos-statuette-c01ba617ec83491195146583b70e3df9
-
 ## Installation
 
 You need Node.js installed on your computer.

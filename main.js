@@ -12,8 +12,6 @@ import { addObjectsToScene } from "./modules/sceneHelpers.js";
 import { setupPlayButton } from "./modules/menu.js";
 import { clickHandling } from "./modules/clickHandling.js";
 import { setupVR } from "./modules/VRSupport.js";
-import { loadStatueModel } from "./modules/statue.js";
-import { loadBenchModel } from "./modules/bench.js";
 
 let { camera, controls, renderer } = setupScene();
 
@@ -37,9 +35,5 @@ setupEventListeners(controls);
 clickHandling(renderer, camera, paintings);
 
 setupRendering(scene, camera, renderer, paintings, controls, walls);
-
-loadStatueModel(scene);
-
-loadBenchModel(scene);
 
 setupVR(renderer);
