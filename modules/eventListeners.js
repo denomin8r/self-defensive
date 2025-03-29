@@ -5,7 +5,7 @@ let lockPointer = true;
 let showMenuOnUnlock = false;
 
 // add the controls parameter which is the pointer lock controls and is passed from main.js where setupEventListeners is called
-export const setupEventListeners = (controls, camera, scene) => {
+export const setupEventListeners = (renderer, controls) => {
   // add the event listeners to the document which is the whole page
   document.addEventListener(
     "keydown",
@@ -24,6 +24,14 @@ export const setupEventListeners = (controls, camera, scene) => {
     }
     showMenuOnUnlock = false;
   });
+
+  renderer.domElement.addEventListener("click", () => {
+      const menu = document.getElementById("menu")
+      if(menu.style.display == 'none'){
+        controls.lock();
+      }
+    },
+  );
 };
 
 // toggle the pointer lock
