@@ -50,8 +50,8 @@ export function createWalls(scene, textureLoader) {
     new THREE.BoxGeometry(roomDimensions.depth, roomDimensions.height, 0.001), 
     wallMaterial
   );
+  rightWall.rotation.y = -Math.PI / 2; 
   rightWall.position.x = roomDimensions.rightWallX;
-  rightWall.rotation.y = Math.PI / 2; 
 
   wallGroup.add(frontWall, backWall, leftWall, rightWall);
 

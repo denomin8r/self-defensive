@@ -38,7 +38,7 @@ export const setupRendering = (
     let currentWall = null;
 
     for (const [wallName, normal] of Object.entries(wallNormals)) {
-      const dot = cameraDirection.dot(normal);
+      const dot = -cameraDirection.dot(normal);
       if (dot > maxDot) {
         maxDot = dot;
         currentWall = wallName;
