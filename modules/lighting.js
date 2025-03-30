@@ -35,52 +35,52 @@ export const setupLighting = (scene, paintings) => {
 
     // Create a GUI folder for this spotlight
     const folder = gui.addFolder(`Spotlight (${x}, ${y}, ${z})`);
-    folder.add(spotlight, "intensity", 0, 4);
+    folder.add(spotlight, "intensity", 0, 4).name("Intensity");
     folder.add(spotlight, "angle", 0, Math.PI / 2).name("Angle");
     folder.add(spotlight, "penumbra", 0, 1).name("Penumbra");
     folder.add(spotlight, "decay", 0, 2).name("Decay");
     folder.add(spotlight, "distance", 0, 100).name("Distance");
-    folder.add(spotlight.position, "light x", -50, 50);
-    folder.add(spotlight.position, "light y", -50, 50);
-    folder.add(spotlight.position, "light z", -50, 50);
-    folder.add(spotlight.target.position, "target x", -50, 50);
-    folder.add(spotlight.target.position, "target y", -50, 50);
-    folder.add(spotlight.target.position, "target z", -50, 50);
+    folder.add(spotlight.position, "light x", -50, 50).name("X");
+    folder.add(spotlight.position, "light y", -50, 50).name("Y");
+    folder.add(spotlight.position, "light z", -50, 50).name("Z");
+    folder.add(spotlight.target.position, "target x", -50, 50).name("Xa");
+    folder.add(spotlight.target.position, "target y", -50, 50).name("Ya");
+    folder.add(spotlight.target.position, "target z", -50, 50).name("Za");
 
     return spotlight;
   }
 
-  const frontWallSpotlight = createSpotlight(
-    0,
-    6.7,
-    -13,
-    0.948,
-    new THREE.Vector3(0, 0, -20)
-  );
+  // const frontWallSpotlight = createSpotlight(
+  //   0,
+  //   6.7,
+  //   -13,
+  //   0.948,
+  //   new THREE.Vector3(0, 0, -20)
+  // );
 
-  const backWallSpotlight = createSpotlight(
-    0,
-    6.7,
-    13,
-    0.948,
-    new THREE.Vector3(0, 0, 20)
-  );
+  // const backWallSpotlight = createSpotlight(
+  //   0,
+  //   6.7,
+  //   13,
+  //   0.948,
+  //   new THREE.Vector3(0, 0, 20)
+  // );
 
-  const leftWallSpotlight = createSpotlight(
-    -13,
-    6.7,
-    0,
-    0.948,
-    new THREE.Vector3(-20, 0, 0)
-  );
+  // const leftWallSpotlight = createSpotlight(
+  //   -13,
+  //   6.7,
+  //   0,
+  //   0.948,
+  //   new THREE.Vector3(-20, 0, 0)
+  // );
 
-  const rightWallSpotlight = createSpotlight(
-    13,
-    6.7,
-    0,
-    0.948,
-    new THREE.Vector3(20, 0, 0)
-  );
+  // const rightWallSpotlight = createSpotlight(
+  //   13,
+  //   6.7,
+  //   0,
+  //   0.948,
+  //   new THREE.Vector3(20, 0, 0)
+  // );
 
   return gui;
 };

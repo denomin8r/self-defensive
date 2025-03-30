@@ -38,14 +38,9 @@ export const createCeiling = (scene, textureLoader) => {
   const ceilingGeometry = new THREE.PlaneGeometry(roomDimensions.width, roomDimensions.depth);
   const ceilingMaterial = new THREE.MeshLambertMaterial({
     map: colorTexture,
-    displacementMap: displacementTexture,
-    aoMap: aoTexture,
-    emissiveMap: emissionTexture,
-    metalnessMap: metalnessTexture,
     normalMap: normalGLTexture,
-    normalMapType: THREE.NormalMap,
-    roughnessMap: roughnessTexture,
-    displacementScale: 0.1,
+    normalMapType: THREE.TangentSpaceNormalMap,
+    emissiveMap: emissionTexture,
     side: THREE.DoubleSide,
   });
   const ceilingPlane = new THREE.Mesh(ceilingGeometry, ceilingMaterial);

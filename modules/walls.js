@@ -28,33 +28,30 @@ export function createWalls(scene, textureLoader) {
     new THREE.BoxGeometry(roomDimensions.width, roomDimensions.height, 0.001), 
     wallMaterial 
   );
-
-  frontWall.position.z = -Math.floor(roomDimensions.depth / 2); 
-
-  // Left Wall
-  const leftWall = new THREE.Mesh(
-    new THREE.BoxGeometry(roomDimensions.depth, roomDimensions.height, 0.001), 
-    wallMaterial
-  );
-
-  leftWall.rotation.y = Math.PI / 2; 
-  leftWall.position.x = -Math.floor(roomDimensions.width / 2); 
-
-  // Right Wall
-  const rightWall = new THREE.Mesh( 
-    new THREE.BoxGeometry(roomDimensions.depth, roomDimensions.height, 0.001), 
-    wallMaterial
-  );
-
-  rightWall.position.x = Math.floor(roomDimensions.width / 2);
-  rightWall.rotation.y = Math.PI / 2; 
+  frontWall.position.z = roomDimensions.frontWallZ;
 
   // Back Wall
   const backWall = new THREE.Mesh(
     new THREE.BoxGeometry(roomDimensions.width, roomDimensions.height, 0.001),
     wallMaterial 
   );
-  backWall.position.z = Math.floor(roomDimensions.depth / 2);
+  backWall.position.z = roomDimensions.backWallZ;
+
+  // Left Wall
+  const leftWall = new THREE.Mesh(
+    new THREE.BoxGeometry(roomDimensions.depth, roomDimensions.height, 0.001), 
+    wallMaterial
+  );
+  leftWall.rotation.y = Math.PI / 2; 
+  leftWall.position.x = roomDimensions.leftWallX;
+
+  // Right Wall
+  const rightWall = new THREE.Mesh( 
+    new THREE.BoxGeometry(roomDimensions.depth, roomDimensions.height, 0.001), 
+    wallMaterial
+  );
+  rightWall.position.x = roomDimensions.rightWallX;
+  rightWall.rotation.y = Math.PI / 2; 
 
   wallGroup.add(frontWall, backWall, leftWall, rightWall);
 
