@@ -19,7 +19,7 @@ const walls = createWalls(scene, textureLoader);
 const floor = setupFloor(scene);
 const ceiling = createCeiling(scene, textureLoader);
 const paintings = createPaintings(scene, textureLoader);
-const lighting = setupLighting(scene, paintings);
+let gui = setupLighting(scene, paintings);
 
 createBoundingBoxes(walls);
 createBoundingBoxes(paintings);
@@ -28,6 +28,6 @@ addObjectsToScene(scene, paintings);
 
 setupPlayButton(controls);
 
-setupEventListeners(renderer, controls);
+setupEventListeners(renderer, controls, gui);
 
 setupRendering(scene, camera, renderer, paintings, controls, walls);

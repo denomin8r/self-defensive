@@ -81,4 +81,6 @@ export const setupLighting = (scene, paintings) => {
     0.948,
     new THREE.Vector3(20, 0, 0)
   );
+
+  return gui;
 };

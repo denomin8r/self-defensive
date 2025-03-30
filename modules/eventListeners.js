@@ -5,11 +5,11 @@ let lockPointer = true;
 let showMenuOnUnlock = false;
 
 // add the controls parameter which is the pointer lock controls and is passed from main.js where setupEventListeners is called
-export const setupEventListeners = (renderer, controls) => {
+export const setupEventListeners = (renderer, controls, gui) => {
   // add the event listeners to the document which is the whole page
   document.addEventListener(
     "keydown",
-    (event) => onKeyDown(event, controls),
+    (event) => onKeyDown(event, controls, gui),
     false
   );
   document.addEventListener(
@@ -45,7 +45,7 @@ function togglePointerLock(controls) {
   lockPointer = !lockPointer; // toggle the lockPointer variable
 }
 
-function onKeyDown(event, controls) {
+function onKeyDown(event, controls, gui) {
   // event is the event object that has the key property
   if (event.key in keysPressed) {
     // check if the key pressed by the user is in the keysPressed object
@@ -90,6 +90,15 @@ function onKeyDown(event, controls) {
   if (event.key === "r") {
     // if the "r" key is pressed
     location.reload(); // reload the page
+  }
+
+  if (event.key === "c") {
+    // Find the GUI element by its class
+    if (gui._hidden) {
+      gui.show();
+    } else {
+      gui.hide();
+    }
   }
 }
 
