@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import floortTexture from "../public/WoodFloor040_4K-JPG/WoodFloor040_4K_Color.jpg";
 import { roomDimensions } from "./constants";
 
 export const setupFloor = (scene) => {
@@ -7,19 +6,19 @@ export const setupFloor = (scene) => {
 
   // Load the textures
   const colorTexture = textureLoader.load(
-    "WoodFloor040_4K-JPG/WoodFloor040_4K_Color.jpg"
+    "public/Floor/WoodFloor040_2K-JPG_Color.jpg"
   );
   const displacementTexture = textureLoader.load(
-    "WoodFloor040_4K-JPG/WoodFloor040_4K_Displacement.jpg"
+    "public/Floor/WoodFloor040_2K-JPG_Displacement.jpg"
   );
   const normalTexture = textureLoader.load(
-    "WoodFloor040_4K-JPG/WoodFloor040_4K_NormalGL.jpg"
+    "public/Floor/WoodFloor040_2K-JPG_NormalGL.jpg"
   );
   const roughnessTexture = textureLoader.load(
-    "WoodFloor040_4K-JPG/WoodFloor040_4K_Roughness.jpg"
+    "public/Floor/WoodFloor040_2K-JPG_Roughness.jpg"
   );
   const aoTexture = textureLoader.load(
-    "WoodFloor040_4K-JPG/WoodFloor040_4K_AmbientOcclusion.jpg"
+    "public/Floor/WoodFloor040_2K-JPG_AmbientOcclusion.jpg"
   );
 
   // Set texture parameters

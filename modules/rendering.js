@@ -48,8 +48,6 @@ export const setupRendering = (
     // If we're facing a different wall than before, log it
     if (currentWall !== lastWall) {
       console.log(`Facing ${currentWall} wall`);
-      let n = wallNormals[currentWall]
-      console.log(`Wall Normal: ${n.x},${n.y},${n.z}`)
       lastWall = currentWall;
     }
 

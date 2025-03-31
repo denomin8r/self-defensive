@@ -7,17 +7,17 @@ export function createWalls(scene, textureLoader) {
   scene.add(wallGroup);
 
   const normalTexture = textureLoader.load(
-    "leather_white_4k.gltf/textures/leather_white_nor_gl_4k.jpg"
+    "public/Walls/leather_white_nor_gl_4k.jpg"
   );
   const roughnessTexture = textureLoader.load(
-    "leather_white_4k.gltf/textures/leather_white_rough_4k.jpg"
+    "public/Walls/leather_white_rough_4k.jpg"
   );
 
   normalTexture.wrapS = normalTexture.wrapT = THREE.RepeatWrapping;
   roughnessTexture.wrapS = roughnessTexture.wrapT = THREE.RepeatWrapping;
 
   const wallMaterial = new THREE.MeshStandardMaterial({
-    color: 0xadadae,
+    color: 0xd8d8d8,
     normalMap: normalTexture,
     roughnessMap: roughnessTexture,
     side: THREE.DoubleSide,

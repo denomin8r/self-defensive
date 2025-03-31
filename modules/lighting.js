@@ -1,10 +1,6 @@
 import * as THREE from "three";
-import { GUI } from "lil-gui";
 
-export const setupLighting = (scene, paintings) => {
-  // Initialize GUI
-  const gui = new GUI();
-
+export const setupLighting = (scene, gui) => {
   // Ambient light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
   scene.add(ambientLight);
@@ -40,47 +36,49 @@ export const setupLighting = (scene, paintings) => {
     folder.add(spotlight, "penumbra", 0, 1).name("Penumbra");
     folder.add(spotlight, "decay", 0, 2).name("Decay");
     folder.add(spotlight, "distance", 0, 100).name("Distance");
-    folder.add(spotlight.position, "light x", -50, 50).name("X");
-    folder.add(spotlight.position, "light y", -50, 50).name("Y");
-    folder.add(spotlight.position, "light z", -50, 50).name("Z");
-    folder.add(spotlight.target.position, "target x", -50, 50).name("Xa");
-    folder.add(spotlight.target.position, "target y", -50, 50).name("Ya");
-    folder.add(spotlight.target.position, "target z", -50, 50).name("Za");
+    folder.add(spotlight.position, "x", -50, 50).name("Light x");
+    folder.add(spotlight.position, "y", -50, 50).name("Light y");
+    folder.add(spotlight.position, "z", -50, 50).name("Light z");
+    folder.add(spotlight.target.position, "x", -50, 50).name("Target x");
+    folder.add(spotlight.target.position, "y", -50, 50).name("Target y");
+    folder.add(spotlight.target.position, "z", -50, 50).name("Target z");
 
     return spotlight;
   }
 
-  // const frontWallSpotlight = createSpotlight(
-  //   0,
-  //   6.7,
-  //   -13,
-  //   0.948,
-  //   new THREE.Vector3(0, 0, -20)
-  // );
+  const frontWallSpotlight = createSpotlight(
+    0,
+    6.7,
+    -13,
+    0.948,
+    new THREE.Vector3(0, 0, -20)
+  );
 
-  // const backWallSpotlight = createSpotlight(
-  //   0,
-  //   6.7,
-  //   13,
-  //   0.948,
-  //   new THREE.Vector3(0, 0, 20)
-  // );
+  const backWallSpotlight = createSpotlight(
+    0,
+    6.7,
+    13,
+    0.948,
+    new THREE.Vector3(0, 0, 20)
+  );
 
-  // const leftWallSpotlight = createSpotlight(
-  //   -13,
-  //   6.7,
-  //   0,
-  //   0.948,
-  //   new THREE.Vector3(-20, 0, 0)
-  // );
+  const leftWallSpotlight = createSpotlight(
+    -13,
+    6.7,
+    0,
+    0.948,
+    new THREE.Vector3(-20, 0, 0)
+  );
 
-  // const rightWallSpotlight = createSpotlight(
-  //   13,
-  //   6.7,
-  //   0,
-  //   0.948,
-  //   new THREE.Vector3(20, 0, 0)
-  // );
+  const rightWallSpotlight = createSpotlight(
+    13,
+    6.7,
+    0,
+    0.948,
+    new THREE.Vector3(20, 0, 0)
+  );
 
-  return gui;
+  const spotlights = new THREE.Group();
+  spotlights.add(frontWallSpotlight, backWallSpotlight, leftWallSpotlight, rightWallSpotlight);
+  return spotlights;
 };
