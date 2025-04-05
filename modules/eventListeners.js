@@ -109,15 +109,6 @@ function onKeyUp(event, controls) {
   }
 }
 
-document.getElementById("toggle-info").addEventListener("click", () => {
-  document.getElementById("info-panel").classList.toggle("collapsed");
-  document.getElementById("toggle-info").innerText = document
-    .getElementById("info-panel")
-    .classList.contains("collapsed")
-    ? "Show"
-    : "Hide";
-});
-
 document.getElementById("about_button").addEventListener("click", function () {
   document.getElementById("about-overlay").classList.add("show");
 });

@@ -8,10 +8,7 @@ export const paintingData = [
     height: roomDimensions.height - 4, // height of the painting
     position: { x: 0, y: 0, z: roomDimensions.frontWallZ }, // position of the painting
     rotationY: 0, // rotation of the painting
-    info: {
-      // info about the painting
-      title: `Front`,
-    }
+    direction: `Front`,
   },
   // Back Wall
   {
@@ -20,9 +17,7 @@ export const paintingData = [
     height: roomDimensions.height - 4,
     position: { x: 0, y: 0, z: roomDimensions.backWallZ },
     rotationY: Math.PI,
-    info: {
-      title: `Back`,
-    },
+    direction: `Back`,
   },
   // Left Wall
   {
@@ -31,9 +26,7 @@ export const paintingData = [
     height: 3,
     position: { x: roomDimensions.leftWallX, y: 0, z: 0},
     rotationY: Math.PI / 2,
-    info: {
-      title: `Left`,
-    },
+    direction: `Left`,
   },
   // Right
   {
@@ -42,8 +35,6 @@ export const paintingData = [
     height: 3,
     position: { x: roomDimensions.rightWallX, y: 0, z: 0},
     rotationY: -Math.PI / 2,
-    info: {
-      title: `Right`,
-    },
+    direction: `Right`,
   },
 ];

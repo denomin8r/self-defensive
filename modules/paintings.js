@@ -18,7 +18,7 @@ export function createPaintings(scene, textureLoader) {
 
     painting.userData = {
       type: 'painting', 
-      info: data.info, 
+      direction: data.direction, 
     };
 
     painting.castShadow = true; 
