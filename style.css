@@ -1,6 +1,11 @@
 /* Add Animate.css to your project */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
 
+@font-face {
+  font-family: 'bookman';
+  src: url('./fonts/bookman.ttf');
+}
+
 html,
 body {
   width: 100%;
@@ -45,27 +50,24 @@ canvas {
 }
 
 #menu {
-  width: 40em;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 1.2em;
-  border-radius: 0.9em;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 #menu .title {
   padding: 1em;
-  background-color: rgba(52, 58, 125, 0.8);
-  color: #f2c641;
-  border-radius: 0.9em;
+  font-family: "bookman", serif;
+  color: #000000;
   position: relative;
   z-index: 2;
-  text-shadow: 2px 2px 0px #f2c641, 4px 4px 0px rgba(0, 0, 0, 0.4);
-  animation: fadeIn 2s ease-in, shadow-pulse 2s infinite;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 @keyframes shadow-pulse {
@@ -81,39 +83,6 @@ canvas {
   transform: rotateX(0deg); /* reset the transformation on hover */
 }
 
-.title-info {
-  background-color: rgba(35, 37, 88, 0.8);
-  color: #f2c641;
-  padding: 1em;
-  border-radius: 0.9em;
-  width: 80%;
-  text-align: center;
-  margin: 0 auto;
-}
-
-#menu #content_container {
-  padding: 1em;
-  border-bottom-left-radius: 0.9em;
-  border-bottom-right-radius: 0.9em;
-
-  -webkit-box-shadow: 0em 0.25em 0.75em rgba(124, 124, 124, 0.5);
-  -moz-box-shadow: 0em 0.25em 0.75em rgba(124, 124, 124, 0.5);
-  box-shadow: 0em 0.25em 0.75em rgba(124, 124, 124, 0.5);
-}
-
-#menu #img_container {
-  position: relative;
-  height: 14.5em;
-  overflow: hidden;
-  border-top-left-radius: 0.9em;
-  border-top-right-radius: 0.9em;
-}
-
-#menu #img_container img {
-  flex-shrink: 0;
-  width: 105%;
-}
-
 @keyframes fadeInSlideUp {
   0% {
     opacity: 0;
@@ -125,19 +94,6 @@ canvas {
   }
 }
 
-#menu {
-  width: 40em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 1.2em;
-  border-radius: 0.9em;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
-  overflow: hidden;
-}
-
 #menu .title h1 {
   margin: 0;
   font-size: 2.5em;
@@ -145,28 +101,32 @@ canvas {
 
 #menu #content {
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#menu #content .title {
+  margin-bottom: 2em;
 }
 
 #menu #content p {
   font-size: 1.1em;
-  line-height: 1.6em;
-  margin: 0.5em 0;
+  line-height: 1.1em;
+  margin: 1em 1em 1em 1em;
 }
 
 #menu #play_button {
   display: inline-block;
-  background-color: rgba(52, 58, 125, 0.8);
-  color: #f2c641;
-  border-radius: 0.9em;
-  padding: 0.5em 1.5em;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000000;
+  font-family: "bookman", serif;
   font-weight: bold;
-  margin-top: 1em;
-  margin-bottom: 1em;
   transition: all 0.4s;
 }
 
 #menu #play_button:hover {
-  background-color: rgba(52, 58, 125);
+  background-color: #d5bc71;
   cursor: pointer;
   transform: scale(1.05);
 }
@@ -189,30 +149,6 @@ canvas {
   position: relative;
   display: inline-block;
   margin-bottom: 1em;
-}
-
-#starry_night_bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://th.bing.com/th/id/R.cf8cb0d1a972300c5e60b3ebf20b5779?rik=QLOj5Ukvu%2brJNQ&pid=ImgRaw&r=0");
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
-  animation: panBg 30s linear infinite;
-  background-attachment: fixed;
-}
-
-#starry_night_bg:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
 }
 
 @keyframes panBg {
