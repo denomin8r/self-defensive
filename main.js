@@ -4,7 +4,7 @@ import { createPaintings } from "./modules/paintings.js";
 import { createWalls } from "./modules/walls.js";
 import { setupLighting } from "./modules/lighting.js";
 import { setupFloor } from "./modules/floor.js";
-import { createCeiling } from "./modules/ceiling.js";
+import { createCeiling as setupCeiling } from "./modules/ceiling.js";
 import { createBoundingBoxes } from "./modules/boundingBox.js";
 import { setupRendering } from "./modules/rendering.js";
 import { setupEventListeners } from "./modules/eventListeners.js";
@@ -17,10 +17,11 @@ let { camera, controls, renderer } = setupScene();
 const textureLoader = new THREE.TextureLoader();
 
 const walls = createWalls(scene, textureLoader);
-const floor = setupFloor(scene);
-const ceiling = createCeiling(scene, textureLoader);
 const paintings = createPaintings(scene, textureLoader);
-const spotlights = setupLighting(scene, gui);
+
+setupFloor(scene);
+setupCeiling(scene, textureLoader);
+setupLighting(scene, gui);
 
 createBoundingBoxes(walls);
 createBoundingBoxes(paintings);

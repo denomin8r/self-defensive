@@ -1,6 +1,8 @@
 const roomWidth = 20;
-const roomHeight = 20;
+const roomHeight = 19;
 const roomDepth = 18;
+
+export const MARGIN = 4;
 
 export const roomDimensions = {
     "width": roomWidth,
