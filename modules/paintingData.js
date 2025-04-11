@@ -7,8 +7,8 @@ export const paintingSrcs = [
   `artworks/4.jpg`,
 ];
 
-export const paintingPositions = [
-  { // Front
+export const paintingPlacements = [
+  { // Front Wall
     x: 0,
     y: 0,
     z: roomDimensions.frontWallZ + 0.01,
@@ -16,7 +16,7 @@ export const paintingPositions = [
     width: roomDimensions.width - margin,
     height: roomDimensions.height - margin,
   },
-  { // Right
+  { // Right Wall
     x: roomDimensions.rightWallX - 0.01,
     y: 0,
     z: 0,
@@ -24,7 +24,7 @@ export const paintingPositions = [
     width: roomDimensions.depth - margin,
     height: roomDimensions.height - margin,
   },
-  { // Back
+  { // Back Wall
     x: 0,
     y: 0,
     z: roomDimensions.backWallZ - 0.01,
@@ -32,7 +32,7 @@ export const paintingPositions = [
     width: roomDimensions.width - margin,
     height: roomDimensions.height - margin,
   },
-  { // Left
+  { // Left Wall
     x: roomDimensions.leftWallX + 0.01,
     y: 0,
     z: 0,
