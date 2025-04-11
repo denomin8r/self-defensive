@@ -10,7 +10,6 @@ import { setupRendering } from "./modules/rendering.js";
 import { setupEventListeners } from "./modules/eventListeners.js";
 import { addObjectsToScene } from "./modules/sceneHelpers.js";
 import { setupPlayButton } from "./modules/menu.js";
-import { gui } from "./modules/gui.js"
 
 let { camera, controls, renderer } = setupScene();
 
@@ -21,7 +20,7 @@ const paintings = createPaintings(scene, textureLoader);
 
 setupFloor(scene);
 setupCeiling(scene, textureLoader);
-setupLighting(scene, gui);
+setupLighting(scene);
 
 createBoundingBoxes(walls);
 createBoundingBoxes(paintings);
@@ -30,6 +29,6 @@ addObjectsToScene(scene, paintings);
 
 setupPlayButton(controls);
 
-setupEventListeners(renderer, controls, gui);
+setupEventListeners(renderer, controls);
 
 setupRendering(scene, camera, renderer, paintings, controls, walls);
