@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { scene, setupScene } from "./modules/scene.js";
-import { placePaintings } from "./modules/paintings.js";
+import { setupPaintings, placePaintings } from "./modules/paintings.js";
 import { createWalls } from "./modules/walls.js";
 import { setupLighting } from "./modules/lighting.js";
 import { setupFloor } from "./modules/floor.js";
@@ -15,17 +15,18 @@ let { camera, controls, renderer } = setupScene();
 
 const textureLoader = new THREE.TextureLoader();
 
-const walls = createWalls(scene, textureLoader);
-
 setupFloor(scene);
 setupCeiling(scene, textureLoader);
 setupLighting(scene);
 
+const walls = createWalls(scene, textureLoader);
+const paintings = setupPaintings(scene);
+
 createBoundingBoxes(walls);
 
 // Initial placement of paintings
-placePaintings(scene, textureLoader, wallIndex.front);
+placePaintings(textureLoader, paintings, wallIndex.front);
 
 setupPlayButton(controls);
 setupEventListeners(renderer, controls);
-setupRendering(scene, camera, renderer, controls, walls, textureLoader);
+setupRendering(scene, camera, renderer, controls, walls, textureLoader, paintings);

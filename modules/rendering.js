@@ -10,6 +10,7 @@ export const setupRendering = (
   controls,
   walls,
   textureLoader,
+  paintings
 ) => {
   const clock = new THREE.Clock();
   
@@ -49,9 +50,11 @@ export const setupRendering = (
 
     // If we're facing a different wall than before, log it
     if (currentWall !== lastWall) {
-      console.log(`Facing ${currentWall} wall`);
+      const startTime = performance.now();
+      placePaintings(textureLoader, paintings, wallIndex[currentWall]);
+      const endTime = performance.now();
+      console.log(`placePaintings took ${(endTime - startTime).toFixed(3)}ms`);
       lastWall = currentWall;
-      placePaintings(scene, textureLoader, wallIndex[currentWall]);
     }
 
     renderer.gammaOutput = true;

@@ -1,20 +1,17 @@
 import * as THREE from 'three';
 import { addObjectsToScene } from './sceneHelpers.js';
 import { createBoundingBoxes } from './boundingBox.js';
-import { paintingPositions as paintingPlacements, paintingSrcs } from "./paintingData.js";
+import { paintingPlacements, paintingSrcs } from "./paintingData.js";
 
-export function placePaintings(scene, textureLoader, startIndex) {
- 
+export function setupPaintings(scene) {
+  // paintings are setup in the order Front, Right, Back, Left
   let paintings = [];
 
-  paintingSrcs.forEach((src, index) => {
-    
-    const placement = paintingPlacements[(index + startIndex) % paintingPlacements.length];
+  paintingPlacements.forEach((placement) => {
 
     const painting = new THREE.Mesh( 
       new THREE.PlaneGeometry(placement.width, placement.height),
       new THREE.MeshLambertMaterial({ 
-        map: textureLoader.load(src),
         side: THREE.DoubleSide,
       })
     );
@@ -29,4 +26,13 @@ export function placePaintings(scene, textureLoader, startIndex) {
 
   createBoundingBoxes(paintings);
   addObjectsToScene(scene, paintings);
+
+  return paintings;
+}
+
+export function placePaintings(textureLoader, paintings, startIndex) {
+  paintings.forEach((painting, index) => {
+    painting.material.map = textureLoader.load(paintingSrcs[(index - startIndex + paintingSrcs.length) % paintingSrcs.length]);
+    painting.material.needsUpdate = true;
+  });
 }
