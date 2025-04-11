@@ -2,29 +2,32 @@ import * as THREE from "three";
 import { roomDimensions } from "./constants";
 
 export const setupLighting = (scene) => {
+  const lightGroup = new THREE.Group();
+
   // Ambient light
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-  scene.add(ambientLight);
+  lightGroup.add(ambientLight);
 
-  function createSpotlight(x, y, z, name) {
+  function createSpotlight(x, y, z) {
     const targetPosition = new THREE.Vector3(0, -10, 0);
     const spotlight = new THREE.SpotLight(0xffffff, 0.6);
     spotlight.position.set(x, y, z);
+    spotlight.intensity = 1;
     spotlight.target.position.copy(targetPosition);
     spotlight.castShadow = true;
     spotlight.penumbra = .7;
     spotlight.decay = .7;
-    spotlight.distance = 40;
+    spotlight.distance = 50;
 
     // Add spotlight and its target to the scene
-    scene.add(spotlight);
-    scene.add(spotlight.target);
-
-    return spotlight;
+    lightGroup.add(spotlight);
+    lightGroup.add(spotlight.target);
   }
 
-  createSpotlight(0, roomDimensions.height - 1, roomDimensions.frontWallZ, 'Front');
-  createSpotlight(0, roomDimensions.height - 1, roomDimensions.backWallZ, 'Back');
-  createSpotlight(roomDimensions.leftWallX, roomDimensions.height - 1, 0, 'Left');
-  createSpotlight(roomDimensions.rightWallX, roomDimensions.height - 1, 0, 'Right');
+  createSpotlight(0, roomDimensions.height - 1, roomDimensions.frontWallZ);
+  createSpotlight(0, roomDimensions.height - 1, roomDimensions.backWallZ);
+  createSpotlight(roomDimensions.leftWallX, roomDimensions.height - 1, 0);
+  createSpotlight(roomDimensions.rightWallX, roomDimensions.height - 1, 0);
+
+  scene.add(lightGroup);
 };

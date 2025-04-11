@@ -10,7 +10,7 @@ let renderer;
 export const setupScene = () => {
   // PerspectiveCamera is a type of camera that mimics the way the human eye sees things. It takes 4 parameters: field of view, aspect ratio, near clipping plane, and far clipping plane. The field of view is the extent of the scene that is seen on the display at any given moment. The aspect ratio should be the width of the element divided by the height (in this case, the screen width and height). The camera will not render objects that are closer to the camera than the near clipping plane or further away than the far clipping plane. Objects that are exactly on the clipping plane will not be rendered.
   camera = new THREE.PerspectiveCamera(
-    70, // fov = field of view
+    75, // fov = field of view
     window.innerWidth / window.innerHeight, // aspect ratio
     0.1, // near clipping plane
     1000 // far clipping plane

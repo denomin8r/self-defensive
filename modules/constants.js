@@ -1,6 +1,6 @@
-const roomWidth = 20;
-const roomHeight = 20;
-const roomDepth = 20;
+const roomWidth = 30;
+const roomHeight = 30;
+const roomDepth = 30;
 
 export const margin = 4;
 
