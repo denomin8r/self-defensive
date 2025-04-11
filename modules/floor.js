@@ -1,9 +1,7 @@
 import * as THREE from "three";
 import { roomDimensions } from "./constants";
 
-export const setupFloor = (scene) => {
-  const textureLoader = new THREE.TextureLoader();
-
+export const setupFloor = (scene, textureLoader) => {
   // Load the textures
   const colorTexture = textureLoader.load(
     "public/Floor/WoodFloor040_2K-JPG_Color.jpg"

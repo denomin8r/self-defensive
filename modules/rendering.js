@@ -8,9 +8,9 @@ export const setupRendering = (
   camera,
   renderer,
   controls,
-  walls,
   textureLoader,
-  paintings
+  wallGroup,
+  paintingGroup
 ) => {
   const clock = new THREE.Clock();
   
@@ -31,7 +31,7 @@ export const setupRendering = (
   let render = function () {
     const delta = clock.getDelta();
 
-    updateMovement(delta, controls, camera, walls);
+    updateMovement(delta, controls, camera, wallGroup, paintingGroup);
 
     // Get camera's forward direction
     camera.getWorldDirection(cameraDirection);
@@ -51,7 +51,7 @@ export const setupRendering = (
     // If we're facing a different wall than before, log it
     if (currentWall !== lastWall) {
       const startTime = performance.now();
-      placePaintings(textureLoader, paintings, wallIndex[currentWall]);
+      placePaintings(textureLoader, paintingGroup, wallIndex[currentWall]);
       const endTime = performance.now();
       console.log(`placePaintings took ${(endTime - startTime).toFixed(3)}ms`);
       lastWall = currentWall;

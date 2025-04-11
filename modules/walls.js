@@ -1,9 +1,8 @@
 import * as THREE from "three";
 import { roomDimensions } from "./constants";
+import { createBoundingBoxes } from "./boundingBox.js";
 
 export function createWalls(scene, textureLoader) {
-  let wallGroup = new THREE.Group();
-  scene.add(wallGroup);
 
   const normalTexture = textureLoader.load(
     "public/Walls/leather_white_nor_gl_4k.jpg"
@@ -51,8 +50,11 @@ export function createWalls(scene, textureLoader) {
   );
   rightWall.rotation.y = -Math.PI / 2; 
   rightWall.position.x = roomDimensions.rightWallX;
-
+  
+  let wallGroup = new THREE.Group();
   wallGroup.add(frontWall, backWall, leftWall, rightWall);
+  createBoundingBoxes(wallGroup);
+  scene.add(wallGroup);
 
   return wallGroup;
 }

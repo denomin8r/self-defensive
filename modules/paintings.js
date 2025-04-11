@@ -1,11 +1,10 @@
 import * as THREE from 'three';
-import { addObjectsToScene } from './sceneHelpers.js';
 import { createBoundingBoxes } from './boundingBox.js';
 import { paintingPlacements, paintingSrcs } from "./paintingData.js";
 
 export function setupPaintings(scene) {
   // paintings are setup in the order Front, Right, Back, Left
-  let paintings = [];
+  let paintingGroup = new THREE.Group();
 
   paintingPlacements.forEach((placement) => {
 
@@ -21,17 +20,17 @@ export function setupPaintings(scene) {
     painting.castShadow = true; 
     painting.receiveShadow = true; 
 
-    paintings.push(painting); 
+    paintingGroup.add(painting); 
   });
 
-  createBoundingBoxes(paintings);
-  addObjectsToScene(scene, paintings);
+  createBoundingBoxes(paintingGroup);
+  scene.add(paintingGroup);
 
-  return paintings;
+  return paintingGroup;
 }
 
-export function placePaintings(textureLoader, paintings, startIndex) {
-  paintings.forEach((painting, index) => {
+export function placePaintings(textureLoader, paintingGroup, startIndex) {
+  paintingGroup.children.forEach((painting, index) => {
     painting.material.map = textureLoader.load(paintingSrcs[(index - startIndex + paintingSrcs.length) % paintingSrcs.length]);
     painting.material.needsUpdate = true;
   });
