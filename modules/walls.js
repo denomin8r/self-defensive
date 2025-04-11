@@ -1,5 +1,4 @@
 import * as THREE from "three";
-
 import { roomDimensions } from "./constants";
 
 export function createWalls(scene, textureLoader) {

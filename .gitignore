@@ -10,3 +10,4 @@ jspm_packages/
 .env.local
 .DS_Store
 **/.DS_Store
+public/.DS_Store

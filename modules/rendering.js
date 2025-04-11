@@ -1,13 +1,15 @@
 import * as THREE from "three";
 import { updateMovement } from "./movement.js";
+import { placePaintings } from "./paintings.js";
+import { wallIndex } from "./constants.js";
 
 export const setupRendering = (
   scene,
   camera,
   renderer,
-  paintings,
   controls,
-  walls
+  walls,
+  textureLoader,
 ) => {
   const clock = new THREE.Clock();
   
@@ -49,6 +51,7 @@ export const setupRendering = (
     if (currentWall !== lastWall) {
       console.log(`Facing ${currentWall} wall`);
       lastWall = currentWall;
+      placePaintings(scene, textureLoader, wallIndex[currentWall]);
     }
 
     renderer.gammaOutput = true;
