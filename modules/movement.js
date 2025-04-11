@@ -50,11 +50,8 @@ export const checkCollision = (camera, walls) => {
     new THREE.Vector3(1, 1, 1) // size
   );
 
-  for (let i = 0; i < walls.children.length; i++) {
-    // loop through each wall
-    const wall = walls.children[i]; // get the wall
+  for (const wall of walls.children) {
     if (playerBoundingBox.intersectsBox(wall.BoundingBox)) {
-      // check if the playerBoundingBox intersects with the wall's bounding box. If it does, return true.
       return true;
     }
   }
