@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { scene, setupScene } from "./modules/scene.js";
-import { setupPaintings, placePaintings } from "./modules/paintings.js";
+import { setupPaintings } from "./modules/paintings.js";
 import { createWalls } from "./modules/walls.js";
 import { setupLighting } from "./modules/lighting.js";
 import { setupFloor } from "./modules/floor.js";
@@ -21,9 +21,6 @@ setupLighting(scene);
 const wallGroup = createWalls(scene, textureLoader);
 const paintingGroup = setupPaintings(scene, textureLoader);
 
-// Initial placement of paintings
-placePaintings(textureLoader, paintingGroup, wallIndex.front);
-
-setupPlayButton(controls);
+setupPlayButton(controls, paintingGroup, textureLoader);
 setupEventListeners(renderer, controls);
-setupRendering(scene, camera, renderer, controls,textureLoader, wallGroup, paintingGroup);
+setupRendering(scene, camera, renderer, controls, textureLoader, wallGroup, paintingGroup);

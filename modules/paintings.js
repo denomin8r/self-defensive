@@ -6,7 +6,7 @@ function getRandomTextureIndex() {
   return Math.floor(Math.random() * paintingSrcs.length);
 }
 
-export function setupPaintings(scene, textureLoader) {
+export function setupPaintings(scene) {
   // paintings are setup in the order Front, Right, Back, Left
   let paintingGroup = new THREE.Group();
 
@@ -15,6 +15,7 @@ export function setupPaintings(scene, textureLoader) {
       new THREE.PlaneGeometry(placement.width, placement.height),
       new THREE.MeshLambertMaterial({ 
         side: THREE.DoubleSide,
+        color: 0x808080 // Gray color
       })
     );
 
@@ -29,28 +30,22 @@ export function setupPaintings(scene, textureLoader) {
   createBoundingBoxes(paintingGroup);
   scene.add(paintingGroup);
 
-  // Start the texture change timer
+  return paintingGroup;
+}
+
+export function startTextureChanges(paintingGroup, textureLoader) {
+  // Remove color from all paintings
+  paintingGroup.children.forEach((painting) => {
+    delete painting.material.color;
+  });
+
   setInterval(() => {
     paintingGroup.children.forEach((painting) => {
       const newTextureIndex = getRandomTextureIndex();
-      
-      // Load the new texture first
       textureLoader.load(paintingSrcs[newTextureIndex], (newTexture) => {
-        // Only swap in the new texture once it's fully loaded
         painting.material.map = newTexture;
         painting.material.needsUpdate = true;
       });
     });
   }, 2000);
-
-  return paintingGroup;
-}
-
-export function placePaintings(textureLoader, paintingGroup, startIndex) {
-  paintingGroup.children.forEach((painting, index) => {
-    textureLoader.load(paintingSrcs[(index - startIndex + paintingSrcs.length) % paintingSrcs.length], (texture) => {
-      painting.material.map = texture;
-      painting.material.needsUpdate = true;
-    });
-  });
 }
