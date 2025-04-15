@@ -1,15 +1,9 @@
 import { roomDimensions, margin } from "./constants";
 
-export const paintingSrcs = [
-  `artworks/1.jpg`,
-  `artworks/2.jpg`,
-  `artworks/3.jpg`,
-  `artworks/4.jpg`,
-  'artworks/5.jpg',
-  'artworks/6.jpg',
-  'artworks/7.jpg',
-  'artworks/8.jpg',
-];
+export const paintingSrcs = Array.from(
+  { length: 10 },
+  (_, i) => `artworks/${i + 1}.jpg`
+);
 
 export const paintingPlacements = [
   { // Front Wall
