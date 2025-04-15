@@ -5,6 +5,10 @@ export const paintingSrcs = [
   `artworks/2.jpg`,
   `artworks/3.jpg`,
   `artworks/4.jpg`,
+  'artworks/5.jpg',
+  'artworks/6.jpg',
+  'artworks/7.jpg',
+  'artworks/8.jpg',
 ];
 
 export const paintingPlacements = [
