@@ -22,7 +22,7 @@ const wallGroup = createWalls(scene, textureLoader);
 const paintingGroup = setupPaintings(scene, textureLoader);
 
 // Initial placement of paintings
-// placePaintings(textureLoader, paintingGroup, wallIndex.front);
+placePaintings(textureLoader, paintingGroup, wallIndex.front);
 
 setupPlayButton(controls);
 setupEventListeners(renderer, controls);

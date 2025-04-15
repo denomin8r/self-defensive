@@ -1,7 +1,5 @@
 import * as THREE from "three";
 import { updateMovement } from "./movement.js";
-import { placePaintings } from "./paintings.js";
-import { wallIndex } from "./constants.js";
 
 export const setupRendering = (
   scene,
@@ -24,9 +22,6 @@ export const setupRendering = (
 
   // Create a vector for camera's forward direction
   const cameraDirection = new THREE.Vector3();
-  
-  // Keep track of the last wall we were facing
-  let lastWall = null;
 
   let render = function () {
     const delta = clock.getDelta();
@@ -46,15 +41,6 @@ export const setupRendering = (
         maxDot = dot;
         currentWall = wallName;
       }
-    }
-
-    // If we're facing a different wall than before, log it
-    if (currentWall !== lastWall) {
-      const startTime = performance.now();
-      placePaintings(textureLoader, paintingGroup, wallIndex[currentWall]);
-      const endTime = performance.now();
-      console.log(`placePaintings took ${(endTime - startTime).toFixed(3)}ms`);
-      lastWall = currentWall;
     }
 
     renderer.gammaOutput = true;
