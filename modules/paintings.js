@@ -37,15 +37,12 @@ export function startTextureChanges(paintingGroup, textureLoader) {
   // Remove color from all paintings
   paintingGroup.children.forEach((painting) => {
     delete painting.material.color;
-  });
-
-  setInterval(() => {
-    paintingGroup.children.forEach((painting) => {
+    setInterval(() => {
       const newTextureIndex = getRandomTextureIndex();
       textureLoader.load(paintingSrcs[newTextureIndex], (newTexture) => {
         painting.material.map = newTexture;
         painting.material.needsUpdate = true;
       });
-    });
-  }, 2000);
+    }, 2000);
+  });
 }
