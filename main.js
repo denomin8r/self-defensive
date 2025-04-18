@@ -8,7 +8,6 @@ import { createCeiling as setupCeiling } from "./modules/ceiling.js";
 import { setupRendering } from "./modules/rendering.js";
 import { setupEventListeners } from "./modules/eventListeners.js";
 import { setupPlayButton } from "./modules/menu.js";
-import { wallIndex } from "./modules/constants.js";
 
 let { camera, controls, renderer } = setupScene();
 
@@ -19,7 +18,7 @@ setupCeiling(scene, textureLoader);
 setupLighting(scene);
 
 const wallGroup = createWalls(scene, textureLoader);
-const paintingGroup = setupPaintings(scene, textureLoader);
+const paintingGroup = setupPaintings(scene);
 
 setupPlayButton(controls, paintingGroup, textureLoader);
 setupEventListeners(renderer, controls);

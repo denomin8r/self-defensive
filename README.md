@@ -1,6 +1,4 @@
-## 3D Art Gallery Tutorial using Three.js
-
-I made this live coding tutorial about "how to create an interactive 3D Art Gallery using Three.js". This project is perfect for artists or designers to exhibit their artwork portfolios or projects. The full tutorial is almost 8 hours long, and is divided into parts. Please consider subscribing to my YouTube channel if you are interested.
+## Self Defensive
 
 ## HELP!
 First of all, use GitHub commits to mark our progress, so you can easily follow along and see the project evolve. So, to use the initial exact Three.js module I am using, go to "Commits" section of the GitHub repository and scroll down to the first commits, and download that version of the code, then step by step review and compare the other versions of the code. 

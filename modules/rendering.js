@@ -43,6 +43,12 @@ export const setupRendering = (
       }
     }
 
+    // Update the strobe shader time for the front wall painting
+    const frontPainting = paintingGroup.children[0];
+    if (frontPainting.material instanceof THREE.ShaderMaterial) {
+      frontPainting.material.uniforms.time.value += delta;
+    }
+
     renderer.gammaOutput = true;
     renderer.gammaFactor = 2.2;
 
