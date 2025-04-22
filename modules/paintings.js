@@ -80,7 +80,6 @@ export function setupPaintings(scene) {
     painting.position.set(placement.x, placement.y, placement.z); 
     painting.rotation.y = placement.rotationY; 
     painting.castShadow = true; 
-    painting.receiveShadow = true; 
     painting.receiveShadow = true;
     painting.wall = placement.wall;
 
