@@ -48,6 +48,22 @@ function createStrobeMaterial() {
   });
 }
 
+function createSolidColorMaterial() {
+  const randomColor = new THREE.Vector3(
+    Math.random(),
+    Math.random(),
+    Math.random()
+  );
+  return new THREE.ShaderMaterial({
+    vertexShader,
+    fragmentShader,
+    side: THREE.DoubleSide,
+    uniforms: {
+      color: { value: randomColor },
+    }
+  });
+}
+
 export function setupPaintings(scene) {
   // paintings are setup in the order Front, Right, Back, Left
   let paintingGroup = new THREE.Group();
@@ -80,12 +96,18 @@ export function startTextureChanges(paintingGroup, textureLoader) {
   paintingGroup.children.forEach((painting) => {
     const changeTexture = () => {
       // Randomly decide whether to use strobe or painting material
-      const useStrobe = Math.random() < 0.3;
       
-      if (useStrobe) {
+      const rand = Math.random();
+      
+      if (rand < 0.33) {
         // Create a new instance of strobe material with random color
         const newStrobeMaterial = createStrobeMaterial();
         painting.material = newStrobeMaterial;
+        painting.material.needsUpdate = true;
+      } else if (rand < 0.66) {
+        // Create new solid color material
+        const newSolidColorMaterial = createSolidColorMaterial();
+        painting.material = newSolidColorMaterial;
         painting.material.needsUpdate = true;
       } else {
         // Create new painting material and load texture

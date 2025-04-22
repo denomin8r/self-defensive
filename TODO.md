@@ -1,7 +1,5 @@
 # TODO
 
-- Create a Solid Color Material 
-
 - Algorithm controlling the 4 walls at once
 
 - Have 4algorithm be time-driven. At specific intervals, move to a different phase of development
