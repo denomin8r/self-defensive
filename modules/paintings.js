@@ -81,6 +81,8 @@ export function setupPaintings(scene) {
     painting.rotation.y = placement.rotationY; 
     painting.castShadow = true; 
     painting.receiveShadow = true; 
+    painting.receiveShadow = true;
+    painting.wall = placement.wall;
 
     paintingGroup.add(painting); 
   });

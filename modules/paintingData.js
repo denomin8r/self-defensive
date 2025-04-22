@@ -7,6 +7,7 @@ export const paintingSrcs = Array.from(
 
 export const paintingPlacements = [
   { // Front Wall
+    wall: "front",
     x: 0,
     y: 0,
     z: roomDimensions.frontWallZ + 0.01,
@@ -15,6 +16,7 @@ export const paintingPlacements = [
     height: roomDimensions.height - margin,
   },
   { // Right Wall
+    wall: "right",
     x: roomDimensions.rightWallX - 0.01,
     y: 0,
     z: 0,
@@ -23,6 +25,7 @@ export const paintingPlacements = [
     height: roomDimensions.height - margin,
   },
   { // Back Wall
+    wall: "back",
     x: 0,
     y: 0,
     z: roomDimensions.backWallZ - 0.01,
@@ -31,6 +34,7 @@ export const paintingPlacements = [
     height: roomDimensions.height - margin,
   },
   { // Left Wall
+    wall: "left",
     x: roomDimensions.leftWallX + 0.01,
     y: 0,
     z: 0,
