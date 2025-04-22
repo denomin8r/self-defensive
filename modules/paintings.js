@@ -92,34 +92,63 @@ export function setupPaintings(scene) {
 }
 
 export function startTextureChanges(paintingGroup, textureLoader) {
+  let startTime = Date.now();
+  
   // Process all paintings including the front wall
   paintingGroup.children.forEach((painting) => {
     const changeTexture = () => {
-      // Randomly decide whether to use strobe or painting material
+      const elapsedTime = (Date.now() - startTime) / 1000; // Convert to seconds
+      let stage;
       
+      if (elapsedTime < 15) {
+        stage = 1;
+      } else if (elapsedTime < 30) {
+        stage = 2;
+      } else {
+        stage = 3;
+      }
+      
+      // Randomly decide whether to use strobe or painting material
       const rand = Math.random();
       
-      if (rand < 0.33) {
-        // Create a new instance of strobe material with random color
-        const newStrobeMaterial = createStrobeMaterial();
-        painting.material = newStrobeMaterial;
-        painting.material.needsUpdate = true;
-      } else if (rand < 0.66) {
-        // Create new solid color material
+      if (stage === 1) {
+        // Stage 1: Only solid colors
         const newSolidColorMaterial = createSolidColorMaterial();
         painting.material = newSolidColorMaterial;
         painting.material.needsUpdate = true;
-      } else {
-        // Create new painting material and load texture
-        painting.material = new THREE.MeshLambertMaterial({ 
-          side: THREE.DoubleSide,
-        });
-        
-        const newTextureIndex = getRandomTextureIndex();
-        textureLoader.load(paintingSrcs[newTextureIndex], (newTexture) => {
-          painting.material.map = newTexture;
+      } else if (stage === 2) {
+        // Stage 2: Mix of solid colors and strobe
+        if (rand < 0.5) {
+          const newSolidColorMaterial = createSolidColorMaterial();
+          painting.material = newSolidColorMaterial;
           painting.material.needsUpdate = true;
-        });
+        } else {
+          const newStrobeMaterial = createStrobeMaterial();
+          painting.material = newStrobeMaterial;
+          painting.material.needsUpdate = true;
+        }
+      } else {
+        // Stage 3: Mix of all three
+        if (rand < 0.33) {
+          const newSolidColorMaterial = createSolidColorMaterial();
+          painting.material = newSolidColorMaterial;
+          painting.material.needsUpdate = true;
+        } else if (rand < 0.66) {
+          const newStrobeMaterial = createStrobeMaterial();
+          painting.material = newStrobeMaterial;
+          painting.material.needsUpdate = true;
+        } else {
+          // Create new painting material and load texture
+          painting.material = new THREE.MeshLambertMaterial({ 
+            side: THREE.DoubleSide,
+          });
+          
+          const newTextureIndex = getRandomTextureIndex();
+          textureLoader.load(paintingSrcs[newTextureIndex], (newTexture) => {
+            painting.material.map = newTexture;
+            painting.material.needsUpdate = true;
+          });
+        }
       }
       
       // Schedule next texture change with random interval

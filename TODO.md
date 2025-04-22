@@ -1,8 +1,8 @@
 # TODO
 
-- Algorithm controlling the 4 walls at once
+- Modularize the code for each stage
 
-- Have 4algorithm be time-driven. At specific intervals, move to a different phase of development
+- Reactivate tracking the "currentWall" being faced by the viewer
 
 - Gradually increase speed of transitions
 
