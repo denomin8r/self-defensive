@@ -22,6 +22,7 @@ export const setupRendering = (
 
   // Create a vector for camera's forward direction
   const cameraDirection = new THREE.Vector3();
+  let lastWall = null;
 
   let render = function () {
     const delta = clock.getDelta();
@@ -41,6 +42,11 @@ export const setupRendering = (
         maxDot = dot;
         currentWall = wallName;
       }
+    }
+
+    if (currentWall != lastWall) {
+      console.log("Facing: " + currentWall);
+      lastWall = currentWall;
     }
 
     // Update strobe materials for each painting
