@@ -122,11 +122,7 @@ function stage3(painting, textureLoader) {
   // Randomly decide whether to use strobe or painting material
   const rand = Math.random();
 
-  if (rand < 0.33) {
-    const newSolidColorMaterial = createSolidColorMaterial();
-    painting.material = newSolidColorMaterial;
-    painting.material.needsUpdate = true;
-  } else if (rand < 0.66) {
+  if (rand < 0.50) {
     const newStrobeMaterial = createStrobeMaterial();
     painting.material = newStrobeMaterial;
     painting.material.needsUpdate = true;
