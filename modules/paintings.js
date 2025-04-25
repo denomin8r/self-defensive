@@ -6,7 +6,7 @@ function getRandomTextureIndex() {
   return Math.floor(Math.random() * paintingSrcs.length);
 }
 
-function getRandomInterval(min = 1000, max = 3000) {
+function getRandomInterval(min = 1000, max = 5000) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -100,44 +100,25 @@ function stage1(painting) {
 }
 
 function stage2(painting) {
-  // Stage 2: Mix of solid colors and strobe
-
-  // Randomly decide whether to use strobe or painting material
-  const rand = Math.random();
-      
-  if (rand < 0.5) {
-    const newSolidColorMaterial = createSolidColorMaterial();
-    painting.material = newSolidColorMaterial;
-    painting.material.needsUpdate = true;
-  } else {
-    const newStrobeMaterial = createStrobeMaterial();
-    painting.material = newStrobeMaterial;
-    painting.material.needsUpdate = true;
-  }
+  // Stage 2: Strobe
+  const newStrobeMaterial = createStrobeMaterial();
+  painting.material = newStrobeMaterial;
+  painting.material.needsUpdate = true;
 }
 
 function stage3(painting, textureLoader) {
   // Stage 3: Mix of all three
 
-  // Randomly decide whether to use strobe or painting material
-  const rand = Math.random();
-
-  if (rand < 0.50) {
-    const newStrobeMaterial = createStrobeMaterial();
-    painting.material = newStrobeMaterial;
+  // Create new painting material and load texture
+  painting.material = new THREE.MeshLambertMaterial({ 
+    side: THREE.DoubleSide,
+  });
+  
+  const newTextureIndex = getRandomTextureIndex();
+  textureLoader.load(paintingSrcs[newTextureIndex], (newTexture) => {
+    painting.material.map = newTexture;
     painting.material.needsUpdate = true;
-  } else {
-    // Create new painting material and load texture
-    painting.material = new THREE.MeshLambertMaterial({ 
-      side: THREE.DoubleSide,
-    });
-    
-    const newTextureIndex = getRandomTextureIndex();
-    textureLoader.load(paintingSrcs[newTextureIndex], (newTexture) => {
-      painting.material.map = newTexture;
-      painting.material.needsUpdate = true;
-    });
-  }
+  });
 }
 
 export function startTextureChanges(paintingGroup, textureLoader) {
@@ -148,16 +129,29 @@ export function startTextureChanges(paintingGroup, textureLoader) {
     const changeTexture = () => {
       const elapsedTime = (Date.now() - startTime) / 1000; // Convert to seconds
       
-      if (elapsedTime < 5) {
+      if (elapsedTime < 10) {
+        if (painting.stage !== 1) {
+          painting.stage = 1;
+          console.log(elapsedTime + ": " + painting.wall + " stage 1");
+        }
         stage1(painting);
-      } else if (elapsedTime < 10) {
+      } else if (elapsedTime < 20) {
+        if (painting.stage !== 2) {
+          painting.stage = 2;
+          console.log(elapsedTime + ": " + painting.wall + " stage 2");
+        }
         stage2(painting);
       } else {
+        if (painting.stage !== 3) {
+          painting.stage = 3;
+          console.log(elapsedTime + ": " + painting.wall + " stage 3");
+        }
         stage3(painting, textureLoader);
       }
       
       // Schedule next texture change with random interval
-      setTimeout(changeTexture, getRandomInterval());
+      const interval = getRandomInterval();
+      setTimeout(changeTexture, interval);
     };
     
     // Start the first texture change
