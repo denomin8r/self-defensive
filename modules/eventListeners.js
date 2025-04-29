@@ -1,5 +1,6 @@
 import { keysPressed } from "./movement.js"; // import the keysPressed object
 import { showMenu, hideMenu } from "./menu.js"; // import the showMenu function
+import { clearAllTextureChanges } from "./paintings.js"; // import the clearAllTextureChanges function
 
 let lockPointer = true;
 let showMenuOnUnlock = false;
@@ -54,6 +55,7 @@ function onKeyDown(event, controls) {
 
   if (event.key === "Escape") {
     // if the "ESC" key is pressed
+    clearAllTextureChanges(); // clear all texture change timeouts
     showMenu(); // show the menu
     showMenuOnUnlock = true;
     controls.unlock(); // unlock the pointer

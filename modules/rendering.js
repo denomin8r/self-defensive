@@ -51,11 +51,12 @@ export const setupRendering = (
 
     // Update strobe materials for each painting
     paintingGroup.children.forEach(painting => {
-      if (painting.material instanceof THREE.ShaderMaterial && 
-          painting.material.uniforms?.time) {
-        painting.material.uniforms.time.value += delta;
-      }
-    });
+      if (
+        painting.material instanceof THREE.ShaderMaterial && 
+        painting.material.uniforms?.time) {
+          painting.material.uniforms.time.value += delta;
+        }
+      });
 
     renderer.gammaOutput = true;
     renderer.gammaFactor = 2.2;
