@@ -88,9 +88,13 @@ function stage_strobe(painting) {
 
 function stage_self_defensive(painting, textureLoader) {
   // Stage 3: Self-Defensive images
-  painting.material = new THREE.MeshLambertMaterial({ 
+  console.log("stage_self_defensive " + painting.wall);
+
+  const newTextureMaterial = new THREE.MeshLambertMaterial({ 
     side: THREE.DoubleSide,
   });
+
+  painting.material = newTextureMaterial;
   
   const newTextureIndex = getRandomTextureIndex();
   textureLoader.load(paintingSrcs[newTextureIndex], (newTexture) => {
@@ -103,7 +107,7 @@ function stage_self_defensive(painting, textureLoader) {
 let textureChangeTimeouts = new Set();
 let textureChangeStartTime = null;
 
-function changeTexture(painting) {
+function changeTexture(painting, textureLoader) {
   console.log(painting.wall + ": " + (Date.now() - textureChangeStartTime) + " ms");
 
   const elapsedTime = (Date.now() - textureChangeStartTime) / 1000;
@@ -116,7 +120,7 @@ function changeTexture(painting) {
   }
   
   // Schedule next texture change with random interval
-  const timeoutId = setTimeout(() => changeTexture(painting), getRandomInterval());
+  const timeoutId = setTimeout(() => changeTexture(painting, textureLoader), getRandomInterval());
   textureChangeTimeouts.add(timeoutId);
 }
 
@@ -127,7 +131,7 @@ export function startTextureChanges(paintingGroup, textureLoader) {
   // Process all paintings including the front wall
   paintingGroup.children.forEach((painting) => {
     // Start the first texture change
-    changeTexture(painting);
+    changeTexture(painting, textureLoader);
   });
 }
 
